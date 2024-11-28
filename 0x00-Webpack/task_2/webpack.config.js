@@ -11,15 +11,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/, // Match CSS files
+        test: /\.css$/i, // Match CSS files
         use: ['style-loader', 'css-loader'], // Load and inject CSS
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/, // Match image files
+        test: /\.(png|jpe?g|gif|svg)$/i, // Match image files
         type: 'asset/resource', // Copy images to the output folder
         generator: {
           filename: 'images/[name][hash][ext]', // Save images in an 'images/' folder
-        },
+        },npx
       },
     ],
   },
