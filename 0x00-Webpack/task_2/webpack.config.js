@@ -1,13 +1,18 @@
 const path = require('path');
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
-  mode: 'production', // Optimize for production
-  entry: './js/dashboard_main.js', // Entry point
-  output: {
-    filename: 'bundle.js', // Bundle name
-    path: path.resolve(__dirname, 'public'), // Output directory
+  mode: 'production',
+  entry: {
+    main: path.resolve(__dirname, './js/dashboard_main.js'),
   },
+  output: {
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js',
+  },
+  performance: {
+		maxAssetSize: 1000000,
+    maxEntrypointSize: 1000000,
+	},
   module: {
     rules: [
       {
@@ -21,23 +26,6 @@ module.exports = {
           filename: 'images/[name][hash][ext]', // Save images in an 'images/' folder
         },npx
       },
-    ],
-  },
-  optimization: {
-    minimize: true, // Enable minimization
-    minimizer: [
-      '...', // Retain existing minimizers (e.g., Terser for JS)
-      new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.imageminMinify,
-          options: {
-            plugins: [
-              ['mozjpeg', { quality: 70 }], // Compress JPEG images
-              ['pngquant', { quality: [0.65, 0.8] }], // Compress PNG images
-            ],
-          },
-        },
-      }),
     ],
   },
 };
