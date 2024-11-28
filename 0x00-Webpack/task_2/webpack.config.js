@@ -21,6 +21,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i, // Match image files
+        use: [
+          'file-loader', {
+            loader: 'image-webpack-loader',
+            Options: {
+              bypassOnDebug: true,
+              disable: true,
+            }
+          }
+        ],
         type: 'asset/resource', // Copy images to the output folder
         generator: {
           filename: 'images/[name][hash][ext]', // Save images in an 'images/' folder
