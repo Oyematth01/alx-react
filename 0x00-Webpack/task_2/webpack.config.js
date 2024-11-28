@@ -24,7 +24,7 @@ module.exports = {
         type: 'asset/resource', // Copy images to the output folder
         generator: {
           filename: 'images/[name][hash][ext]', // Save images in an 'images/' folder
-        },npx
+        },
       },
     ],
   },
