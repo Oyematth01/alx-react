@@ -5,7 +5,19 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    main: path.resolve(__dirname, './js/dashboard_main.js'),
+    header: { 
+			import: './modules/header/header.js',
+			dependOn: 'shared',
+		},
+		body: {
+			import: './modules/body/body.js',
+			dependOn: 'shared',
+		},
+		footer: {
+			import: './modules/footer/footer.js',
+			dependOn: 'shared',
+		},
+		shared: 'jquery',
   },
   output: {
     path: path.resolve(__dirname, 'public'),
